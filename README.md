@@ -7,3 +7,5 @@ Pré-requisitos
 Node.js
 npm
 Cypress 
+
+Também foi incluido uma pipeline de teste CI a cada push no codigo sera verifcado automaticamente 
