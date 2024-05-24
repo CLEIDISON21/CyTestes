@@ -1,15 +1,46 @@
 /// <reference types="cypress"/>
 
-describe('API - usuario',()=>{
-    it ('Get usuarios',()=>{
-    cy.request({
-        method: 'GET',
-        url: 'http://localhost:3000/usuarios',
-        
-    }).then((Response)=>{
-        expect(Response.status).to.equal(200)
-        
+describe('API - usuário', () => {
+    it('Listar usuários', () => {
+        cy.request({
+            method: 'GET',
+            url: 'http://localhost:3000/usuarios'
+        }).then((response) => {
+            expect(response.status).to.equal(200)
+        })
     })
-
+    
+    it('cadastro de usuário', () => {
+        cy.request({
+            method: 'POST',
+            url: 'http://localhost:3000/usuarios',
+            body:{
+                "nome": "Silva",
+                "email": "testes@qa.com.br",
+                "password": "teste",
+                "administrador": "true"
+              }
+        }).then((response) => {
+            expect(response.status).to.equal(201)
+            expect(response.body.message).to.equal('Cadastro realizado com sucesso')
+        })
     })
-})//fim
+    
+    it('email ja cadstrado', () => {
+        cy.request({
+            method: 'POST',
+            url: 'http://localhost:3000/usuarios',
+            body:{
+                "nome": "roger Silva",
+                "email": "teste@qa.com.br",
+                "password": "teste",
+                "administrador": "true"
+              },
+              failOnStatusCode: false
+        }).then((response) => {
+            expect(response.status).to.equal(400)
+            expect(response.body.message).to.equal('Este email já está sendo usado')
+        })
+    })
+    
+}) //fim
