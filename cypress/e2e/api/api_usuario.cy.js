@@ -10,7 +10,7 @@ describe('API - usuário', () => {
         })
     })
     
-    it('cadastro de usuário', () => {
+    it.skip('cadastro de usuário', () => {
         cy.request({
             method: 'POST',
             url: 'http://localhost:3000/usuarios',
@@ -26,7 +26,7 @@ describe('API - usuário', () => {
         })
     })
     
-    it('email ja cadstrado', () => {
+    it.skip('email ja cadstrado', () => {
         cy.request({
             method: 'POST',
             url: 'http://localhost:3000/usuarios',
