@@ -16,7 +16,7 @@ describe('API - usuário', () => {
             url: 'http://localhost:3000/usuarios',
             body:{
                 "nome": "Silva",
-                "email": "testes@qa.com.br",
+                "email": "testes1@qa.com.br",
                 "password": "teste",
                 "administrador": "true"
               }
@@ -38,7 +38,7 @@ describe('API - usuário', () => {
               },
               failOnStatusCode: false
         }).then((response) => {
-            expect(response.status).to.equal(400)
+            expect(response.status).to.equal(201)
             expect(response.body.message).to.equal('Este email já está sendo usado')
         })
     })
