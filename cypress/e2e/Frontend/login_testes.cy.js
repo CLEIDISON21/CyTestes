@@ -8,7 +8,7 @@ describe('teste funcionalidade login', () => {
 
   it('login com usuario invalido', () => {
     cy.login_teste('invalid_user','secret_sauce')
-    cy.get('[data-test="error"]').should('contain','Epic sadface: Username and password do not match any user in this service')
+    cy.get('[data-test="error"]').should('contain','Epic sadface: Username and password do not match any user in this services')
   })
 
   it('login com senha invalida', () => {
